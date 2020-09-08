@@ -2,8 +2,10 @@
 
 @include mat-core();
 
+@import '../../app/custom-card/custom-card.component.scss';
+
 $custom-theme-primary: mat-palette($mat-indigo);
-$custom-theme-accent: mat-palette($mat-custom-orange);
+$custom-theme-accent: mat-palette($mat-custom-orange, 100);
 $custom-theme-warn: mat-palette($mat-red);
 
 $custom-theme: mat-light-theme((
@@ -11,7 +13,45 @@ $custom-theme: mat-light-theme((
     primary: $custom-theme-primary,
     accent: $custom-theme-accent,
     warn: $custom-theme-warn
-  )
+  ),
+  foreground: $mat-light-theme-foreground,
+  background: $mat-light-theme-background
 ));
 
-@include angular-material-theme($custom-theme);
+$custom-theme-dark: mat-dark-theme((
+  color: (
+    primary: $custom-theme-primary,
+    accent: $custom-theme-accent,
+    warn: $custom-theme-warn
+  ),
+  foreground: $mat-dark-theme-foreground,
+  background: $mat-dark-theme-background
+));
+
+@mixin app-root-theme($theme){
+  $background: map-get($theme, background);
+  .wrapper{
+    background-color: mat-color($background, background);
+  }
+}
+
+@mixin typography-color($theme) {
+  $foreground: map-get($theme, foreground);
+  .mat-display-1{
+     color: mat-color($foreground, text);
+  }
+}
+
+.theme-light{
+  @include angular-material-theme($custom-theme);
+  @include app-root-theme($custom-theme);
+  @include custom-card($custom-theme);
+  @include typography-color($custom-theme);
+}
+
+.theme-dark{
+  @include angular-material-theme($custom-theme-dark);
+  @include app-root-theme($custom-theme-dark);
+  @include custom-card($custom-theme-dark);
+   @include typography-color($custom-theme-dark);
+}

@@ -1,7 +1,9 @@
 @import '../../assets/styles/helpers/variables';
 
 .client-card{
-    height: 150px;
+    .client-card-inner{
+        height: 150px;
+    }
     .client-logo{
         background-color: $theme-color;
         height: 50px;

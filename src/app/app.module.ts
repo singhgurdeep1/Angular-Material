@@ -10,11 +10,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClientCardComponent } from './client-card/client-card.component';
+import { CustomCardComponent } from './custom-card/custom-card.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    CustomCardComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { ClientCardComponent } from './client-card/client-card.component';
     MatCardModule,
     MatGridListModule,
     MatRadioModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule
 
   ],
