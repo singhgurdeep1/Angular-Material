@@ -1,1 +1,5 @@
-$theme-color:blueviolet;
+@import '~@angular/material/theming';
+@import '~@angular/material/theming';
+
+$theme-primary:$mat-indigo;
+$theme-accent:$mat-custom-orange;

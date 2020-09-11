@@ -1,11 +1,18 @@
 @import '~@angular/material/theming';
+@import './helpers/variables';
+@import './custom-typography.scss';
 
-@include mat-core();
+@include mat-core($typography-config);
+
 
 @import '../../app/custom-card/custom-card.component.scss';
+@import '../../app/client-card/client-card.component.scss';
+@import './components/checkbox';
+@import './components/select';
+@import './components/radio';
 
-$custom-theme-primary: mat-palette($mat-indigo);
-$custom-theme-accent: mat-palette($mat-custom-orange, 100);
+$custom-theme-primary: mat-palette($theme-primary);
+$custom-theme-accent: mat-palette($theme-accent);
 $custom-theme-warn: mat-palette($mat-red);
 
 $custom-theme: mat-light-theme((
@@ -42,16 +49,22 @@ $custom-theme-dark: mat-dark-theme((
   }
 }
 
+@mixin app-custom-theme($theme){
+  @include angular-material-theme($theme);
+  @include app-root-theme($theme);
+  @include custom-card($theme,$typography-config);
+  @include typography-color($theme);
+  @include client-card($theme);
+  @include custom-checkbox($theme);
+  @include custom-radio($theme);
+  @include custom-select();
+}
+@include app-typography($typography-config);
+
 .theme-light{
-  @include angular-material-theme($custom-theme);
-  @include app-root-theme($custom-theme);
-  @include custom-card($custom-theme);
-  @include typography-color($custom-theme);
+  @include app-custom-theme($custom-theme);
 }
 
 .theme-dark{
-  @include angular-material-theme($custom-theme-dark);
-  @include app-root-theme($custom-theme-dark);
-  @include custom-card($custom-theme-dark);
-   @include typography-color($custom-theme-dark);
+  @include app-custom-theme($custom-theme-dark);
 }

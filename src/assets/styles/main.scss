@@ -2,10 +2,11 @@
 @import 'helpers/mixins';
 @import 'helpers/extends';
 @import 'components/buttons';
+@import 'components/checkbox';
 
 
 html, body { height: 100%; }
 
-body { 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+.mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline{
+    background-color: #eee;
 }

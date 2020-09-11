@@ -1,0 +1,21 @@
+@mixin custom-select() {
+    .mat-form-field-infix{
+        border-top:0;
+        top:2px;
+    }
+
+    .mat-form-field-appearance-outline.mat-form-field-disabled{
+        .mat-form-field-outline{
+            background-color: #eee;
+            border-radius: 5px;
+        }
+    }
+
+    .mat-form-field-appearance-outline{
+        .mat-select-arrow-wrapper{
+            transform: translateY(0);
+        }
+    }
+     
+    
+}

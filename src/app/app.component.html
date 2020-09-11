@@ -3,16 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <span>
-            <mat-slide-toggle (change)="onDarkModeChange($event.checked)">Dark Mode</mat-slide-toggle>
-          </span>
+          <mat-slide-toggle (change)="onDarkModeChange($event.checked)">Dark Mode</mat-slide-toggle>
         </div>
         <div class="col-md-9">
           <nav class="text-right">
             <ul>
-              <li><a href="#">HOME</a></li>
-              <li><a href="#">ABOUT</a></li>
-              <li><a href="#">CONTACT</a></li>
+              <li><a class="nav-text" href="#">HOME</a></li>
+              <li><a class="nav-text" href="#">ABOUT</a></li>
+              <li><a class="nav-text" href="#">CONTACT</a></li>
             </ul>
           </nav>
         </div>
@@ -80,7 +78,7 @@
               </mat-radio-group>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-flat-button [disableRipple]="true" color='accent'>Accent</button>
+              <button mat-flat-button disabled disableRipple color='accent'>Accent</button>
               <button mat-raised-button color='accent'>Accent</button>
               <button mat-stroked-button color='primary'>Accent</button>
               <button mat-button color='accent'>Accent</button>
@@ -88,6 +86,65 @@
           </mat-card>
         </div>
       </div>
+      <br /><br />
+      <h1 class="mat-display-1">Heading</h1>
+      <mat-card>
+        <mat-card-content>
+          <label class="mat-title d-block">Hobbies</label>
+          <mat-checkbox class="s-checkbox d-block" id="my-checkbox" value="" color="accent" disableRipple>
+            Dance
+          </mat-checkbox>
+          <mat-checkbox class="s-checkbox d-block" id="my-checkbox1" value="" color="accent">
+            Music
+          </mat-checkbox>
+        </mat-card-content>
+      </mat-card>
+      <br /><br />
+      <h1 class="mat-display-1">Form</h1>
+      <mat-card>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-md-6">
+              <div>
+                <label class="d-block">Name</label>
+                <mat-form-field color="accent" appearance="outline">
+                  <input matInput placeholder="Placeholder">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                  else.</small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="d-block">Country</label>
+              <mat-form-field color="accent" appearance="outline">
+                <mat-select>
+                  <mat-option value="">All</mat-option>
+                  <mat-option value="us">US</mat-option>
+                  <mat-option value="in">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, debitis repellat
+                    nesciunt ut quas, voluptatibus blanditiis quae quos quo recusandae, autem suscipit pariatur! Id
+                    quasi modi, animi porro quis corrupti alias itaque iste, iusto est nisi quibusdam aspernatur illo
+                    minima illum natus a quo beatae neque sint accusantium, ad maxime.</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <p>Gender</p>
+              <mat-radio-group>
+                <mat-radio-button value="m" color="primary">Male</mat-radio-button>
+                <mat-radio-button value="f" color="primary">Female</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
   </section>
 </div>

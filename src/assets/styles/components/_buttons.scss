@@ -2,7 +2,12 @@ button[mat-button],
 button[mat-raised-button],
 button[mat-icon-button],
 button[mat-stroked-button],
-button[mat-flat-button]
+button[mat-flat-button],
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button
 {
     border-radius: 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 0 10px;
 }
+

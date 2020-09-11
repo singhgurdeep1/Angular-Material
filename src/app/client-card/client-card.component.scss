@@ -1,12 +1,14 @@
-@import '../../assets/styles/helpers/variables';
+@import '~@angular/material/theming';
 
-.client-card{
-    .client-card-inner{
-        height: 150px;
-    }
-    .client-logo{
-        background-color: $theme-color;
+@mixin client-card($theme){
+    $primary: map-get($theme, primary);
+    .client-card{
+        .client-card-inner{
+            height: 150px;
+        }
+        .client-logo{
+        background-color: mat-color($primary);
         height: 50px;
+        }
     }
 }
-

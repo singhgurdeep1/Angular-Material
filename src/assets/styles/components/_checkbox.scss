@@ -1,0 +1,25 @@
+@mixin custom-checkbox($theme){
+  $foreground: map-get($theme, foreground);
+  $primary: map-get($theme, primary);
+
+  .mat-checkbox-frame {
+    border-color: mat-color($foreground, checkbox);
+  }
+  
+  .mat-checkbox-inner-container{
+      height: 20px;
+      width: 20px;
+  }
+
+  .mat-checkbox-layout{
+      white-space: normal;  
+  }
+  
+}
+
+// OVERRIDE STYLES BY ADDING A CUSTOM CLASS
+// .s-checkbox{
+//     .mat-checkbox-frame {
+//         border-color: #7d7d7d;
+//     }
+// }
