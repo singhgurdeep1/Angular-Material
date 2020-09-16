@@ -145,6 +145,36 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <div class="mt-5">
+        <h1>ng-content</h1>
+        <div class="row">
+          <div class="col-md-4">
+            <app-lstn-card>
+              <ng-container card-header>
+                <p>This is header</p>
+              </ng-container>
+              <ng-container card-body>
+                <h4 class="card-title">You can put any content here</h4>
+                <p class="card-text">For example this line of text and</p>
+                <a href="#" class="btn btn-primary">This button</a>
+              </ng-container>
+              <ng-container card-footer>
+                <p>This is footer</p>
+              </ng-container>
+            </app-lstn-card>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <h1>Table</h1>
+        <div class="row">
+          <div class="col-12">
+            <app-table></app-table>
+          </div>
+        </div>
+      </div>
     </div>
+
   </section>
 </div>

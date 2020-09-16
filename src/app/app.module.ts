@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClientCardComponent } from './client-card/client-card.component';
 import { CustomCardComponent } from './custom-card/custom-card.component';
+import { LstnCardComponent } from './shared/lstn-card/lstn-card.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientCardComponent,
-    CustomCardComponent
+    CustomCardComponent,
+    LstnCardComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
