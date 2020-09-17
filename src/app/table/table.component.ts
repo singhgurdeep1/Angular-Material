@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild, Input, OnInit } from '@angular/cor
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { PeriodicElement } from "../periodicModel";
+import { TableColumns } from './columnModel';
 
 @Component({
   selector: 'app-table',
@@ -14,7 +14,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() filter: boolean = false;
   @Input() paging: boolean = false;
   @Input() data: any[];
-  @Input() columns: any[];
+  @Input() columns: TableColumns[];
 
   dataSource: any;
   displayedColumns: string[];

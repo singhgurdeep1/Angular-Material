@@ -1,6 +1,7 @@
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { PeriodicElement } from "./periodicModel";
+import { TableColumns } from "./table/columnModel";
 
 @Component({
   selector: 'app-root',
@@ -23,11 +24,11 @@ export class AppComponent {
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
   ];
 
-  columns = [
-    { columnDef: 'position', header: 'Serial Number', cell: (element: any) => `${element.position}` },
-    { columnDef: 'name', header: 'Name', cell: (element: any) => `${element.name}` },
-    { columnDef: 'weight', header: 'Weight(g)', cell: (element: any) => `${element.weight}` },
-    { columnDef: 'symbol', header: 'Symbol', cell: (element: any) => `${element.symbol}` }
+  columns: TableColumns[] = [
+    { columnDef: 'position', headerTitle: 'Serial Number', cell: (element: any) => `${element.position}`, sortable: true },
+    { columnDef: 'name', headerTitle: 'Name', cell: (element: any) => `${element.name}`, sortable: true },
+    { columnDef: 'weight', headerTitle: 'Weight(g)', cell: (element: any) => `${element.weight}`, sortable: true },
+    { columnDef: 'symbol', headerTitle: 'Symbol', cell: (element: any) => `${element.symbol}`, sortable: true }
   ];
 
 
@@ -40,4 +41,5 @@ export class AppComponent {
     const theme = isChecked ? 'theme-dark' : 'theme-light';
     this.renderer.setAttribute(this.document.body, 'class', theme);
   }
+
 }
