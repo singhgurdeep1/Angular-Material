@@ -1,0 +1,7 @@
+
+@mixin custom-table($config-or-theme) {
+  .mat-table thead{
+      background-color: #eee;
+  }
+
+}

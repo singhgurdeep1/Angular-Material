@@ -10,6 +10,8 @@
 @import './components/checkbox';
 @import './components/select';
 @import './components/radio';
+@import './components/table';
+
 
 $custom-theme-primary: mat-palette($theme-primary);
 $custom-theme-accent: mat-palette($theme-accent);
@@ -57,6 +59,7 @@ $custom-theme-dark: mat-dark-theme((
   @include client-card($theme);
   @include custom-checkbox($theme);
   @include custom-radio($theme);
+  @include custom-table($theme);
   @include custom-select();
 }
 @include app-typography($typography-config);
