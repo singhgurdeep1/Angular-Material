@@ -170,7 +170,12 @@
         <h1>Table</h1>
         <div class="row">
           <div class="col-12">
-            <app-table [data]="PeriodicElements" [columns]="columns" [filter]="true" [paging]="true"></app-table>
+            <div>
+              <button type="button" (click)="onAdd()">Add Post</button>
+            </div>
+            <ng-container *ngIf="$data | async as data">
+              <app-table [data]="data" [columns]="columns" [filter]="true" [paging]="true" [actions]=actions></app-table>
+            </ng-container>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from "./material/material.module";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { ClientCardComponent } from './client-card/client-card.component';
 import { CustomCardComponent } from './custom-card/custom-card.component';
 import { LstnCardComponent } from './shared/lstn-card/lstn-card.component';
 import { TableComponent } from './table/table.component';
+import { NoSanitizePipe } from './table/no-sanitize.pipe';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,15 @@ import { TableComponent } from './table/table.component';
     ClientCardComponent,
     CustomCardComponent,
     LstnCardComponent,
-    TableComponent
+    TableComponent,
+    NoSanitizePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

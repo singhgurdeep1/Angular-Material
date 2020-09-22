@@ -1,16 +1,26 @@
-import { Component, Inject, Renderer2 } from '@angular/core';
+import { JSONPlaceholderService } from './services/jsonplaceholder.service';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { PeriodicElement } from "./periodicModel";
+import { Todo } from "./periodicModel";
 import { TableColumns } from "./table/columnModel";
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'demo-project';
 
+  editable: boolean = true;
+  deleteable: boolean = true;
+
+  actions: boolean[] = [this.editable, this.deleteable];
+/*
   PeriodicElements: PeriodicElement[] = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
     { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
@@ -21,25 +31,63 @@ export class AppComponent {
     { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
     { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
     { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+    { position: 10, name: 'Neon', weight: 20.1797, symbol: '<progress value="32" max="100"> 32% </progress>' },
   ];
+*/
 
   columns: TableColumns[] = [
-    { columnDef: 'position', headerTitle: 'Serial Number', cell: (element: any) => `${element.position}`, sortable: true },
-    { columnDef: 'name', headerTitle: 'Name', cell: (element: any) => `${element.name}`, sortable: true },
-    { columnDef: 'weight', headerTitle: 'Weight(g)', cell: (element: any) => `${element.weight}`, sortable: true },
-    { columnDef: 'symbol', headerTitle: 'Symbol', cell: (element: any) => `${element.symbol}`, sortable: true }
+    { columnDef: 'name', headerTitle: 'Id', cell: (element: any) => `${element.name}`, sortable: true },
+    { columnDef: 'description', headerTitle: 'Name', cell: (element: any) => `${element.description}`, sortable: true },
+    { columnDef: 'priority', headerTitle: 'Weight(g)', cell: (element: any) => `${element.priority}`, sortable: true },
   ];
 
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private JSONPlaceholder: JSONPlaceholderService,
+    private apiService: ApiService
   ) { }
+
+  $data: Observable<Todo>;
+  ngOnInit() {
+
+    this.$data = this.getTodos();
+    /*.subscribe(
+      data => {
+        this.Posts = data;
+        console.log(this.Posts);
+      }
+    );*/
+  }
+
+  getTodos(): any {
+    return this.apiService.get("todos.json").pipe(
+      map((response: any) => {
+        const t = [];
+        for (const key in response) {
+          if (response.hasOwnProperty(key)) {
+            t.push(response[key]);
+          }
+        }
+        console.log(t);
+        return t;
+      })
+    );
+  }
 
   onDarkModeChange(isChecked: boolean) {
     const theme = isChecked ? 'theme-dark' : 'theme-light';
     this.renderer.setAttribute(this.document.body, 'class', theme);
+  }
+
+  onAdd() {
+    this.JSONPlaceholder.addData();
+    
+  }
+
+  onDeleteTodo(id: number) {
+    console.log(id);
   }
 
 }
